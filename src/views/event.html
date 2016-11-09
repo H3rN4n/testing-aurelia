@@ -1,0 +1,12 @@
+<template>
+    <md-collection-item class="accent-text avatar">
+      <a href="#/eventDetail/${event.id}">
+        <img src="/src/images/speakers/${event.image}" alt="${event.speaker}" class="circle">
+        <span class="title">${event.id}: ${event.title}</span>
+        <p>${event.description}</p>
+        <div class="secondary-content">
+          <i class="material-icons">send</i>
+        </div>
+      </a>
+    </md-collection-item>
+</template>

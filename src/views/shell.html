@@ -1,0 +1,24 @@
+<template>
+    <require from="bootstrap/css/bootstrap.css"></require>
+    <require from="views/nav-bar.html"></require>
+    <div class="flexbox-parent">
+        
+        <nav-bar class="flexbox-item" router.bind="router"></nav-bar>
+        <div class="flexbox-item fill-area flexbox-item-grow">
+            <div class="fill-area-content flexbox-item-grow">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-10">
+                            <router-view></router-view>
+                        </div>
+                        <div class="col-xs-2">
+                            <compose view-model="viewmodels/sponsors"></compose>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <compose class="flexbox-item" view="views/footer.html"></compose>
+
+    </div>
+</template>
