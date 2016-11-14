@@ -11,9 +11,13 @@
   "jspm": {
     "dependencies": {
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.1",
+      "aurelia-dialog": "npm:aurelia-dialog@^1.0.0-beta.3.0.1",
       "aurelia-framework": "npm:aurelia-framework@^1.0.7",
       "aurelia-materialize-bridge": "npm:aurelia-materialize-bridge@^0.18.0",
+      "aurelia-modal": "github:vheissu/aurelia-modal@^1.0.0",
       "bootstrap": "github:twbs/bootstrap@^3.3.7",
+      "flexboxgrid": "github:kristoferjoseph/flexboxgrid@^6.3.2",
+      "lodash": "npm:lodash@^4.16.6",
       "materialize": "github:Dogfalo/materialize@^0.97.8",
       "moment": "npm:moment@^2.15.2"
     },

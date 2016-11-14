@@ -1,21 +1,31 @@
-import { inject } from 'aurelia-framework';
-import { DataRepository } from '../services/dataRepository';
-
-@inject(DataRepository)
-
 export class Events{
-    constructor(dataRepository){
-        this.loading = true;
-        this.events = [];
-        dataRepository.getEvents().then((events) => {
-            this.events = events;
-            this.loading = false;
-        }, (err) => {
-            console.log(err);
-        });
-    }
 
-    activate(){
+    constructor(){
         
     }
-} 
+
+    configureRouter(config, router){
+        this.router = router;
+
+        config.title = "Events";
+
+        config.map([
+            {
+                "route": ['', 'future'],
+                "moduleId": "viewmodels/eventsList",
+                "title": "Future Events",
+                "nav": true,
+                "href": "/events/future",
+                "name": "future"
+            },
+            {
+                "route": 'past',
+                "moduleId": "viewmodels/eventsList",
+                "title": "Past Events",
+                "nav": true,
+                "href": "/events/past",
+                "name": "future"
+            }
+        ]);
+    }
+}

@@ -1,0 +1,7 @@
+<template>
+    <md-collection>
+        <div repeat.for="event of events">
+            <compose model.bind="event" view="views/event.html"></compose>
+        </div>
+    </md-collection>
+</template>

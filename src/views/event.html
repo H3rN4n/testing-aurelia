@@ -1,8 +1,10 @@
 <template>
     <md-collection-item class="accent-text avatar">
-      <a href="#/eventDetail/${event.id}">
+      <a href.bind="event.detailUrl">
         <img src="/src/images/speakers/${event.image}" alt="${event.speaker}" class="circle">
-        <span class="title">${event.id}: ${event.title}</span>
+        <span class="title">${event.title}</span>
+        <p>${event.speaker}</p>
+        <p>${event.dateTime}</p>
         <p>${event.description}</p>
         <div class="secondary-content">
           <i class="material-icons">send</i>
