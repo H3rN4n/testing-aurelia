@@ -1,28 +1,8 @@
 <template>
   <div>
-    <md-chip md-close="false">
+    <md-chip repeat.for="[key, val] of mapCollection" md-close="false">
       <img src="/src/images/speakers/speaker1.png" alt="Contact Person">
-      Jane Doe
-    </md-chip>
-    <md-chip md-close="true">
-      <img src="/src/images/speakers/speaker1.png" alt="Contact Person">
-      Jane Doe
-    </md-chip>
-    <md-chip md-close="true">
-      <img src="/src/images/speakers/speaker1.png" alt="Contact Person">
-      Jane Doe
-    </md-chip>
-    <md-chip md-close="true">
-      <img src="/src/images/speakers/speaker1.png" alt="Contact Person">
-      Jane Doe
-    </md-chip>
-    <md-chip md-close="true">
-      <img src="/src/images/speakers/speaker1.png" alt="Contact Person">
-      Jane Doe
-    </md-chip>
-    <md-chip md-close="true">
-      <img src="/src/images/speakers/speaker1.png" alt="Contact Person">
-      Jane Doe
+      ${key}: ${val}
     </md-chip>
   </div>
 </template>

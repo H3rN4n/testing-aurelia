@@ -1,14 +1,28 @@
 <template bindable="router">
   <md-navbar fixed="true">
     <div class="container-fluid">
-      <a href="/#/" class="brand-logo left">
+      <a href="/" class="brand-logo left">
       <img src="/src/images/speakers/speaker1.png" alt="" style="width:40px;">
         <span class="flow-text">${router.title}</span>
         </a>
-      <ul class="right hide-on-med-and-down">
+      <ul if.bind="authenticated"  class="right hide-on-med-and-down">
         <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
           <a href.bind="row.href">${row.title}</a>
         </li>
+      </ul>
+       <ul if.bind="!authenticated" class="right hide-on-med-and-down">
+          <li class="${row.isActive ? 'active' : ''}">
+            <a href="/#/login">Login</a>
+          </li>
+          <li class="${row.isActive ? 'active' : ''}">
+            <a href="/#/signup">Sign up</a>
+          </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+          <li class="loader" if.bind="router.isNavigating">
+              <i class="fa fa-spinner fa-spin fa-2x"></i>
+          </li>
       </ul>
     </div>
   </md-navbar>

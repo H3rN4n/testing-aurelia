@@ -1,5 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { MdToastService } from 'aurelia-materialize-bridge';
+import {AuthenticateStep} from 'aurelia-authentication';
 
 @inject(MdToastService)
 
@@ -9,10 +10,13 @@ export class Shell {
         config.title = 'Events Page';
         config.options.pushState = true;
 
-        config.addPipelineStep('authorize', LogNextStep);
+        //config.addPipelineStep('authorize', LogNextStep);
         // config.addPipelineStep('preActivate', LogNextStep);
         // config.addPipelineStep('preRender', LogNextStep);
         // config.addPipelineStep('postRender', LogNextStep);
+
+        config.addPipelineStep('authorize', AuthenticateStep); // Add a route filter so only authenticated uses are authorized to access some routes
+
 
         config.map([
             { 
@@ -42,7 +46,8 @@ export class Shell {
                 },
                 name: 'jobs',
                 title: 'Jobs',
-                nav: true
+                nav: true,
+                auth: true
             },
             {
                 route: ['eventDetail/:eventId/discussion'], 
@@ -59,7 +64,6 @@ export class Shell {
     constructor(toast){
         this.shellTitle = "you!";
         this.toast = toast;
-        console.log(toast)
     }
 
 }

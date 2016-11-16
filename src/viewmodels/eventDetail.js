@@ -1,26 +1,20 @@
 import { inject } from 'aurelia-framework';
 import { DataRepository } from '../services/dataRepository';
 import { Router } from 'aurelia-router';
-import { MdToastService } from 'aurelia-materialize-bridge';
 
-@inject(DataRepository, Router, MdToastService)
+@inject(DataRepository, Router)
 
 export class EventDetail {
-    constructor(dataRepository, router, toast){
+    constructor(dataRepository, router){
         
         this.dataRepository = dataRepository;
         this.router = router;
-        this.toast = toast;
 
         this.event = {};
         this.loading = false;
-        this.isModalVisible = false;
-        
     }
 
-    modalClosed(){
-        console.log('modalClosed');
-    }
+    
 
     goToDiscussion(){
         console.log('goToDiscussion')
@@ -29,7 +23,7 @@ export class EventDetail {
     }
     
     activate(params, routeConfig, navigationInstruction){
-        
+        return true;
     }
 
     canActivate(params, routeConfig, navigationInstruction){
@@ -37,13 +31,5 @@ export class EventDetail {
             this.event = event;
             this.loading = false;
         });
-    }
-}
-
-class Modal{
-    run(navigationInstruction, next){
-        return next().then(result => {
-            this.isModalVisible = true;
-        })
     }
 }

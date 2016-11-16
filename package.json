@@ -10,6 +10,8 @@
   "license": "ISC",
   "jspm": {
     "dependencies": {
+      "aurelia-api": "npm:aurelia-api@^3.0.0",
+      "aurelia-authentication": "npm:aurelia-authentication@^3.1.0",
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.1",
       "aurelia-dialog": "npm:aurelia-dialog@^1.0.0-beta.3.0.1",
       "aurelia-framework": "npm:aurelia-framework@^1.0.7",
@@ -26,5 +28,12 @@
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
     }
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express-session": "^1.14.2",
+    "passport": "^0.3.2",
+    "passport-google-oauth": "^1.0.0"
   }
 }

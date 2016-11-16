@@ -1,4 +1,5 @@
 import 'materialize';
+import authConfig from '/authConfig';
 import {ViewLocator} from 'aurelia-framework';
 
 export function configure(aurelia){
@@ -8,6 +9,17 @@ export function configure(aurelia){
     aurelia.use 
         .standardConfiguration()
         .developmentLogging()
+        .plugin('aurelia-api', configure => {
+            configure
+                .registerEndpoint('auth', 'http://localhost:3000')
+                //.registerEndpoint('protected-api', 'http://localhost/auth')
+                .registerEndpoint('public-api', 'http://localhost:3000/api')
+                .setDefaultEndpoint('auth');
+        })
+        /* configure aurelia-authentication */
+        .plugin('aurelia-authentication', baseConfig => {
+            baseConfig.configure(authConfig);
+        })
         .plugin('aurelia-dialog', config => {
             config.useDefaults();
             config.settings.lock = true;
