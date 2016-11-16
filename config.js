@@ -22,16 +22,16 @@ System.config({
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.1",
     "aurelia-dialog": "npm:aurelia-dialog@1.0.0-beta.3.0.1",
     "aurelia-framework": "npm:aurelia-framework@1.0.7",
-    "aurelia-materialize-bridge": "npm:aurelia-materialize-bridge@0.18.0",
+    "aurelia-materialize-bridge": "npm:aurelia-materialize-bridge@0.18.1",
     "aurelia-modal": "github:vheissu/aurelia-modal@1.0.0",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "bootstrap": "github:twbs/bootstrap@3.3.7",
     "core-js": "npm:core-js@1.2.7",
     "flexboxgrid": "github:kristoferjoseph/flexboxgrid@6.3.2",
-    "lodash": "npm:lodash@4.16.6",
+    "lodash": "npm:lodash@4.17.2",
     "materialize": "github:Dogfalo/materialize@0.97.8",
-    "moment": "npm:moment@2.15.2",
+    "moment": "npm:moment@2.16.0",
     "github:Dogfalo/materialize@0.97.8": {
       "css": "github:systemjs/plugin-css@0.1.32",
       "jquery": "npm:jquery@2.2.4"
@@ -146,7 +146,7 @@ System.config({
     "npm:aurelia-logging-console@1.0.0": {
       "aurelia-logging": "npm:aurelia-logging@1.1.1"
     },
-    "npm:aurelia-materialize-bridge@0.18.0": {
+    "npm:aurelia-materialize-bridge@0.18.1": {
       "aurelia-binding": "npm:aurelia-binding@1.0.9",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.2.0",
       "aurelia-logging": "npm:aurelia-logging@1.1.1",
