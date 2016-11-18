@@ -11,9 +11,11 @@
   "jspm": {
     "dependencies": {
       "aurelia-api": "npm:aurelia-api@^3.0.0",
+      "aurelia-auth": "npm:aurelia-auth@^3.0.4",
       "aurelia-authentication": "npm:aurelia-authentication@^3.1.0",
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.1",
       "aurelia-dialog": "npm:aurelia-dialog@^1.0.0-beta.3.0.1",
+      "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.0.1",
       "aurelia-framework": "npm:aurelia-framework@^1.0.7",
       "aurelia-materialize-bridge": "npm:aurelia-materialize-bridge@^0.18.0",
       "aurelia-modal": "github:vheissu/aurelia-modal@^1.0.0",
@@ -30,9 +32,11 @@
     }
   },
   "dependencies": {
+    "aurelia-authentication": "^3.1.0",
     "body-parser": "^1.15.2",
     "connect-redis": "^3.1.0",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
     "express-session": "^1.14.2",
     "passport": "^0.3.2",
     "passport-google-oauth2": ">= 0.0.0"

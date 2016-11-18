@@ -1,21 +1,6 @@
-// var express = require('express');
-// var app = express();
-
-// app.use(express.static('./'));
-
-// app.get('/', function(req, res){
-//   res.render('index.html');
-// });
-
-// var server = app.listen(2112, function(){
-//     var host = server.address().address;
-//     var port = server.address().port;
-
-//     console.log("Server is listen on" + host + ':' + port);
-// })
-
 var express          = require( 'express' )
   , app              = express()
+  , cors             = require('cors')
   , server           = require( 'http' ).createServer( app ) 
   , passport         = require( 'passport' )
   , util             = require( 'util' )
@@ -23,12 +8,16 @@ var express          = require( 'express' )
   , cookieParser     = require( 'cookie-parser' )
   , session          = require( 'express-session' )
   , RedisStore       = require( 'connect-redis' )( session )
-  , GoogleStrategy   = require( 'passport-google-oauth2' ).Strategy;
+  , GoogleStrategy   = require( 'passport-google-oauth2' ).Strategy
+  , TwitterStrategy   = require( 'passport-twitter' ).Strategy;
 
 // API Access link for creating client ID and secret:
 // https://code.google.com/apis/console/
 var GOOGLE_CLIENT_ID      = "1028833733426-1c9p82ath1ho224kv6gkclsgnc8gmiqp.apps.googleusercontent.com"
-  , GOOGLE_CLIENT_SECRET  = "kuUkCr1AU22n35Vi9GXIwVrC";
+  , GOOGLE_CLIENT_SECRET  = "kuUkCr1AU22n35Vi9GXIwVrC"
+  , TWITTER_CONSUMER_KEY = 'MohmwkWYsvxFfOdoLVBkwbtSa'
+  , TWITTER_CONSUMER_SECRET = 'BKRrz647oRuCMDUuJPBMOyAJx0QNGEGnuS44MSMZVca9sw3Dje'
+  , APP_PORT = 2112;
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -45,6 +34,34 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+app.use( session({ 
+	secret: 'cookie_secret',
+	name:   'kaas',
+	store:  new RedisStore({
+		host: '127.0.0.1',
+		port: 6379
+	}),
+	proxy:  true,
+    resave: true,
+    saveUninitialized: true
+}));
+
+app.use( passport.initialize());
+app.use( passport.session());
+
+// Use the TwitterStrategy within Passport.
+passport.use(new TwitterStrategy({
+    consumerKey: TWITTER_CONSUMER_KEY,
+    consumerSecret: TWITTER_CONSUMER_SECRET,
+    session: false,
+    callbackURL: "http://aurelia-dev.com:" + APP_PORT + "/auth/twitter/callback"
+  },
+  function(token, tokenSecret, profile, cb) {
+    // User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+    //   return cb(err, user);
+    // });
+  }
+));
 
 // Use the GoogleStrategy within Passport.
 //   Strategies in Passport require a `verify` function, which accept
@@ -59,8 +76,14 @@ passport.use(new GoogleStrategy({
     //then edit your /etc/hosts local file to point on your private IP. 
     //Also both sign-in button + callbackURL has to be share the same url, otherwise two cookies will be created and lead to lost your session
     //if you use it.
-    callbackURL: "http://localhost:2112/auth/google/callback",
-    passReqToCallback   : true
+    callbackURL: "http://aurelia-dev.com:" + APP_PORT + "/auth/google/callback",
+    passReqToCallback   : true,
+    function(request, accessToken, refreshToken, profile, done) {
+        // User.findOrCreate({ googleId: profile.id }, function (err, user) {
+        // return done(err, user);
+        // });
+        console.log(request, accessToken, refreshToken, profile, done);
+    }
   },
   function(request, accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
@@ -88,7 +111,7 @@ app.use( bodyParser.urlencoded({
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:2112');
+    res.setHeader('Access-Control-Allow-Origin', '*');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -104,23 +127,18 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use( session({ 
-	secret: 'cookie_secret',
-	name:   'kaas',
-	store:  new RedisStore({
-		host: '127.0.0.1',
-		port: 6379
-	}),
-	proxy:  true,
-    resave: true,
-    saveUninitialized: true
-}));
-app.use( passport.initialize());
-app.use( passport.session());
+app.use(cors());
+
+app.all('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
 
 app.get('/', function(req, res){
   //res.render('index', { user: req.user });
-  res.render('index.html', { user: req.user });
+  console.log(req.user);
+  res.render('index', { user: req.user });
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
@@ -148,28 +166,48 @@ app.post('/auth/google', passport.authenticate('google', { scope: [
 
 // GET /auth/google/callback
 //   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
+//   request. If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 app.get( '/auth/google/callback', 
     	passport.authenticate( 'google', { 
-    		successRedirect: 'http://localhost:2112',
-    		failureRedirect: 'http://localhost:2112'
+    		successRedirect: 'http://aurelia-dev.com:' + APP_PORT + "/#/jobs",
+    		failureRedirect: 'http://aurelia-dev.com:' + APP_PORT + "/#/login"
 }));
 
 app.post( '/auth/google/callback', 
     	passport.authenticate( 'google', { 
-    		successRedirect: 'http://localhost:2112',
-    		failureRedirect: 'http://localhost:2112'
+    		successRedirect: 'http://aurelia-dev.com:' + APP_PORT + "/#/jobs",
+    		failureRedirect: 'http://aurelia-dev.com:' + APP_PORT + "/#/login"
 }));
+
+app.get('/auth/twitter',
+  passport.authenticate('twitter'));
+
+app.get('/auth/twitter/callback', 
+  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+
+  app.post('/auth/twitter',
+  passport.authenticate('twitter'));
+
+app.post('/auth/twitter/callback', 
+  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
 
 app.get('/logout', function(req, res){
   req.logout();
-  res.redirect('http:/localhost:2112');
+  res.redirect('http://aurelia-dev.com:' + APP_PORT);
 });
 
 
-server.listen( 2112, function(){
+server.listen( APP_PORT, function(){
     var host = server.address().address;
     var port = server.address().port;
 

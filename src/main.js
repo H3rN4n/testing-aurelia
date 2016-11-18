@@ -9,14 +9,13 @@ export function configure(aurelia){
     aurelia.use 
         .standardConfiguration()
         .developmentLogging()
-        .plugin('aurelia-api', configure => {
-            configure
-                .registerEndpoint('auth', 'http://localhost:3000')
-                //.registerEndpoint('protected-api', 'http://localhost/auth')
-                .registerEndpoint('public-api', 'http://localhost:3000/api')
-                .setDefaultEndpoint('auth');
-        })
         /* configure aurelia-authentication */
+        .plugin('aurelia-api', configure => {
+        configure
+            .registerEndpoint('api', 'http://aurelia-dev.com:2112')
+            // .registerEndpoint('protected-api', 'https://myapi.org/protected-api')
+            // .registerEndpoint('public-api', 'http://myapi.org/public-api');
+        })
         .plugin('aurelia-authentication', baseConfig => {
             baseConfig.configure(authConfig);
         })

@@ -10,6 +10,7 @@
           <a href.bind="row.href">${row.title}</a>
         </li>
       </ul>
+    
        <ul if.bind="!authenticated" class="right hide-on-med-and-down">
           <li class="${row.isActive ? 'active' : ''}">
             <a href="/#/login">Login</a>

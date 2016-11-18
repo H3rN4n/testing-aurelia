@@ -1,10 +1,13 @@
 import { inject } from 'aurelia-framework';
-import { MdToastService } from 'aurelia-materialize-bridge';
+import {Router} from 'aurelia-router';
 import {AuthenticateStep} from 'aurelia-authentication';
+import {FetchConfig} from 'aurelia-authentication';
 
-@inject(MdToastService)
+
+@inject(Router, FetchConfig)
 
 export class Shell {
+
     configureRouter(config, router) {
         this.router = router;
         config.title = 'Events Page';
@@ -17,10 +20,9 @@ export class Shell {
 
         config.addPipelineStep('authorize', AuthenticateStep); // Add a route filter so only authenticated uses are authorized to access some routes
 
-
         config.map([
             { 
-                route: ['', 'events'], 
+                route: ['', 'events', 'login'], 
                 viewPorts:{
                     mainContent: {moduleId: 'viewmodels/events'},
                     sideBar: {moduleId: 'viewmodels/sponsors'}
@@ -61,20 +63,26 @@ export class Shell {
         ]);
     }
     
-    constructor(toast){
+    constructor(router, fetchConfig){
         this.shellTitle = "you!";
-        this.toast = toast;
+        this.router = router;
+        this.fetchConfig = fetchConfig;
+    }
+
+    activate() {
+        // this will add the interceptor for the Authorization header to the HttpClient singleton
+        this.fetchConfig.configure();
     }
 
 }
 
-class LogNextStep{
-    run(navigationInstruction, next){
-        return next().then(result => {
-            //next step and all downstreams steps are complete.
-            var toast = new MdToastService;
-            toast.show( result.status + '!', 2000);
-            return result;
-        });
-    }
-}
+// class LogNextStep{
+//     run(navigationInstruction, next){
+//         return next().then(result => {
+//             //next step and all downstreams steps are complete.
+//             var toast = new MdToastService;
+//             toast.show( result.status + '!', 2000);
+//             return result;
+//         });
+//     }
+// }

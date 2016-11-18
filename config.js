@@ -18,9 +18,11 @@ System.config({
 
   map: {
     "aurelia-api": "npm:aurelia-api@3.0.0",
+    "aurelia-auth": "npm:aurelia-auth@3.0.4",
     "aurelia-authentication": "npm:aurelia-authentication@3.1.0",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.1",
     "aurelia-dialog": "npm:aurelia-dialog@1.0.0-beta.3.0.1",
+    "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.1",
     "aurelia-framework": "npm:aurelia-framework@1.0.7",
     "aurelia-materialize-bridge": "npm:aurelia-materialize-bridge@0.18.1",
     "aurelia-modal": "github:vheissu/aurelia-modal@1.0.0",
@@ -69,6 +71,12 @@ System.config({
       "aurelia-framework": "npm:aurelia-framework@1.0.7",
       "aurelia-path": "npm:aurelia-path@1.1.1",
       "extend": "npm:extend@3.0.0"
+    },
+    "npm:aurelia-auth@3.0.4": {
+      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.2.0",
+      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.0",
+      "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.1",
+      "aurelia-router": "npm:aurelia-router@1.0.7"
     },
     "npm:aurelia-authentication@3.1.0": {
       "aurelia-api": "npm:aurelia-api@3.0.0",
