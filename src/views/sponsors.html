@@ -1,8 +1,8 @@
 <template>
     <h4>Profile</h4>
-    <md-card md-image="${user.photoURL}" if.bind="user.photoURL" md-title="${user.displayName}" md-size="small">
+    <md-card md-image="${authService.user.photoURL}" if.bind="authService.user.photoURL" md-title="${authService.user.displayName}" md-size="small">
         <div>
-        ${user.email}
+        ${authService.user.email}
         </div>
     </md-card>
     <compose view="views/chips.html"></compose>

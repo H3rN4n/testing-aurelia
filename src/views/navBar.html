@@ -12,14 +12,14 @@
       </ul>
 
        <ul class="right hide-on-med-and-down">
-          <li if.bind="!userLoggedIn" class="${row.isActive ? 'active' : ''}">
-            <a href="javascript:void(0);" click.delegate="login('google')" if.bind="!userLoggedIn">Login via Google</a>
+          <li if.bind="!authService.userLoggedIn" class="${row.isActive ? 'active' : ''}">
+            <a href="javascript:void(0);" click.delegate="authService.login('google')" if.bind="!authService.userLoggedIn">Login via Google</a>
           </li>
-          <li if.bind="userLoggedIn" class="${row.isActive ? 'active' : ''}">
-            <a href="javascript:void(0);" click.delegate="logout()" if.bind="userLoggedIn">Logout</a>
+          <li if.bind="authService.userLoggedIn" class="${row.isActive ? 'active' : ''}">
+            <a href="javascript:void(0);" click.delegate="authService.logout()" if.bind="authService.userLoggedIn">Logout</a>
           </li>
           
-          <li if.bind="!userLoggedIn" class="${row.isActive ? 'active' : ''}">
+          <li if.bind="!authService.userLoggedIn" class="${row.isActive ? 'active' : ''}">
             <a href="/#/signup">Sign up</a>
           </li>
       </ul>

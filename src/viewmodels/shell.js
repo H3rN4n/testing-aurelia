@@ -68,17 +68,4 @@ export class Shell {
         this.authService = authService;
     }
 
-    login(provider){
-        console.log(this.authService);
-        this.authService.login(provider);
-    }
-
-    logout(){
-        this.authService.logout(provider);
-    }
-
-    activate(){
-
-    }
-
 }

@@ -1,7 +1,7 @@
 <template>
     <require from="bootstrap/css/bootstrap.css"></require>
     <md-colors md-primary-color="indigo" md-accent-color="indigo"></md-colors>
-    <require from="views/nav-bar.html"></require>
+    <compose view-model="viewmodels/navBar"></compose>
     <div class="flexbox-parent">
         <nav-bar class="flexbox-item" router.bind="router"></nav-bar>
         <div class="flexbox-item fill-area flexbox-item-grow">

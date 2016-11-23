@@ -1,7 +1,7 @@
-import {AuthService} from 'aurelia-authentication';
+import {authService} from '../services/authService';
 import {inject, computedFrom} from 'aurelia-framework';
 
-@inject(AuthService)
+@inject(authService)
 
 export class Sponsors{
     constructor(authService){
@@ -13,22 +13,10 @@ export class Sponsors{
         this.authService = authService; 
     }
 
-    @computedFrom('authService.authenticated')
-    get authenticated() {
-        return this.authService.authenticated;
-    }
-
-
-    authenticate(name) {
-        return this.authService.authenticate(name)
-        .then(response => {
-            console.log("auth response " + response);
-        });
-    }
-
-    doSomething(foo){
-        console.log(foo);
-    }
+    // @computedFrom('authService.authenticated')
+    // get authenticated() {
+    //     return this.authService.authenticated;
+    // } 
 
     activate(){
         // this.authService.getMe()
