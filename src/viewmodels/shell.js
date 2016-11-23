@@ -1,13 +1,10 @@
 import { inject } from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {AuthenticateStep} from 'aurelia-authentication';
-import {FetchConfig} from 'aurelia-authentication';
+import {authService} from '../services/authService';
 
-
-@inject(Router, FetchConfig)
+@inject(Router, authService)
 
 export class Shell {
-
     configureRouter(config, router) {
         this.router = router;
         config.title = 'Events Page';
@@ -18,7 +15,7 @@ export class Shell {
         // config.addPipelineStep('preRender', LogNextStep);
         // config.addPipelineStep('postRender', LogNextStep);
 
-        config.addPipelineStep('authorize', AuthenticateStep); // Add a route filter so only authenticated uses are authorized to access some routes
+        //config.addPipelineStep('authorize', AuthenticateStepSession); // Add a route filter so only authenticated uses are authorized to access some routes
 
         config.map([
             { 
@@ -44,7 +41,7 @@ export class Shell {
                 route: ['jobs'],
                 viewPorts:{
                     mainContent: {moduleId: 'viewmodels/jobs'},
-                    sideBar: {moduleId: 'viewmodels/ads'}
+                    sideBar: {moduleId: 'viewmodels/sponsors'}
                 },
                 name: 'jobs',
                 title: 'Jobs',
@@ -55,34 +52,33 @@ export class Shell {
                 route: ['eventDetail/:eventId/discussion'], 
                 viewPorts:{
                     mainContent: {moduleId: 'viewmodels/discussion'},
-                    sideBar: {moduleId: 'viewmodels/ads'}
+                    sideBar: {moduleId: 'viewmodels/sponsors'}
                 },
                 name: 'discussion',
                 title: 'Discussion'
             }
         ]);
     }
+
     
-    constructor(router, fetchConfig){
+    
+    constructor(router, authService){
         this.shellTitle = "you!";
-        this.router = router;
-        this.fetchConfig = fetchConfig;
+        this.router = router;     
+        this.authService = authService;
     }
 
-    activate() {
-        // this will add the interceptor for the Authorization header to the HttpClient singleton
-        this.fetchConfig.configure();
+    login(provider){
+        console.log(this.authService);
+        this.authService.login(provider);
+    }
+
+    logout(){
+        this.authService.logout(provider);
+    }
+
+    activate(){
+
     }
 
 }
-
-// class LogNextStep{
-//     run(navigationInstruction, next){
-//         return next().then(result => {
-//             //next step and all downstreams steps are complete.
-//             var toast = new MdToastService;
-//             toast.show( result.status + '!', 2000);
-//             return result;
-//         });
-//     }
-// }

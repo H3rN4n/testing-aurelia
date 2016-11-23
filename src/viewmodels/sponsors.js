@@ -36,5 +36,7 @@ export class Sponsors{
         //     console.log(profile.username);
         // });
         // return true;
+        //console.log(this.authService);
+        
     }
 }

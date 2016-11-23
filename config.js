@@ -30,6 +30,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "bootstrap": "github:twbs/bootstrap@3.3.7",
     "core-js": "npm:core-js@1.2.7",
+    "fetch": "github:github/fetch@2.0.1",
     "flexboxgrid": "github:kristoferjoseph/flexboxgrid@6.3.2",
     "lodash": "npm:lodash@4.17.2",
     "materialize": "github:Dogfalo/materialize@0.97.8",

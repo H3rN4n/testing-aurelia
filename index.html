@@ -3,6 +3,20 @@
         <link rel="stylesheet" href="/styles.css">
         <link rel="stylesheet" href="/jspm_packages/github/kristoferjoseph/flexboxgrid@6.3.2/src/css/flexboxgrid.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Auth0 Lock script and AngularJS module -->
+        <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDHmDxHz50P1FNLfGo6uAT_KvgzX749nic",
+            authDomain: "pets-7be36.firebaseapp.com",
+            databaseURL: "https://pets-7be36.firebaseio.com",
+            storageBucket: "pets-7be36.appspot.com",
+            messagingSenderId: "522655384573"
+        };
+        firebase.initializeApp(config);
+        </script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     </head>
     <body aurelia-app="main">
         
@@ -14,6 +28,7 @@
 
         <script src="/jspm_packages/system.js"></script>
         <script src="/config.js"></script>
+        <script src="node_modules/jwt-decode/build/jwt-decode.js"></script>
         <script>
             System.import('aurelia-bootstrapper', 'materialize');
         </script>

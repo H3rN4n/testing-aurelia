@@ -14,7 +14,7 @@ export default {
           url: '/auth/google/callback',
           clientId: '1028833733426-1c9p82ath1ho224kv6gkclsgnc8gmiqp.apps.googleusercontent.com',
           //authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-          authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
+          authorizationEndpoint: 'http://aurelia-dev.com:2112/auth/google',
           redirectUri: window.location.origin,
           requiredUrlParams: ['scope'],
           optionalUrlParams: ['display', 'state'],

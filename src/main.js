@@ -1,4 +1,5 @@
 import 'materialize';
+import 'fetch';
 import authConfig from '/authConfig';
 import {ViewLocator} from 'aurelia-framework';
 

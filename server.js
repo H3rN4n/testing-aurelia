@@ -4,12 +4,14 @@ var express          = require( 'express' )
   , server           = require( 'http' ).createServer( app ) 
   , passport         = require( 'passport' )
   , util             = require( 'util' )
+  //, jwt              = require('express-jwt')
+  , jwt              = require('jsonwebtoken')
   , bodyParser       = require( 'body-parser' )
   , cookieParser     = require( 'cookie-parser' )
   , session          = require( 'express-session' )
   , RedisStore       = require( 'connect-redis' )( session )
   , GoogleStrategy   = require( 'passport-google-oauth2' ).Strategy
-  , TwitterStrategy   = require( 'passport-twitter' ).Strategy;
+  , TwitterStrategy  = require( 'passport-twitter' ).Strategy;
 
 // API Access link for creating client ID and secret:
 // https://code.google.com/apis/console/
@@ -141,13 +143,13 @@ app.get('/', function(req, res){
   res.render('index', { user: req.user });
 });
 
-app.get('/account', ensureAuthenticated, function(req, res){
-  res.render('account', { user: req.user });
-});
+// app.get('/account', ensureAuthenticated, function(req, res){
+//   res.render('account', { user: req.user });
+// });
 
-app.get('/login', function(req, res){
-  res.render('login', { user: req.user });
-});
+// app.get('/login', function(req, res){
+//   res.render('login', { user: req.user });
+// });
 
 // GET /auth/google
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -177,8 +179,8 @@ app.get( '/auth/google/callback',
 
 app.post( '/auth/google/callback', 
     	passport.authenticate( 'google', { 
-    		successRedirect: 'http://aurelia-dev.com:' + APP_PORT + "/#/jobs",
-    		failureRedirect: 'http://aurelia-dev.com:' + APP_PORT + "/#/login"
+    		successRedirect: '/',
+    		failureRedirect: '/'
 }));
 
 app.get('/auth/twitter',

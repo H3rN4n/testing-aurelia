@@ -10,12 +10,16 @@
           <a href.bind="row.href">${row.title}</a>
         </li>
       </ul>
-    
-       <ul if.bind="!authenticated" class="right hide-on-med-and-down">
-          <li class="${row.isActive ? 'active' : ''}">
-            <a href="/#/login">Login</a>
+
+       <ul class="right hide-on-med-and-down">
+          <li if.bind="!userLoggedIn" class="${row.isActive ? 'active' : ''}">
+            <a href="javascript:void(0);" click.delegate="login('google')" if.bind="!userLoggedIn">Login via Google</a>
           </li>
-          <li class="${row.isActive ? 'active' : ''}">
+          <li if.bind="userLoggedIn" class="${row.isActive ? 'active' : ''}">
+            <a href="javascript:void(0);" click.delegate="logout()" if.bind="userLoggedIn">Logout</a>
+          </li>
+          
+          <li if.bind="!userLoggedIn" class="${row.isActive ? 'active' : ''}">
             <a href="/#/signup">Sign up</a>
           </li>
       </ul>
