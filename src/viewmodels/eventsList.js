@@ -17,14 +17,16 @@ export class EventsList{
         this.authService = authService;
     }
 
-    @computedFrom('authService.userLoggedIn')
-    get userLoggedIn() {
-        console.log('here');
-        return this.authService.userLoggedIn;
-    }
+    // @computedFrom('authService.userLoggedIn')
+    // get userLoggedIn() {
+    //     console.log('here');
+    //     return this.authService.userLoggedIn;
+    // }
 
     activate(params, routeConfig){
-        this.writeUserListData(this.authService.user.providerData[0].uid, this.events)
+        if(this.authService.user){
+            this.writeUserListData(this.authService.user.providerData[0].uid, this.events)
+        }
         return true;
     }
 
