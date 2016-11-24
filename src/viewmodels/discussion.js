@@ -13,7 +13,6 @@ import { DataRepository } from '../services/dataRepository';
 import { Router } from 'aurelia-router';
 
 import {DialogService} from 'aurelia-dialog';
-import {Prompt} from './my-modal';
 
 @inject(DataRepository, Router, DialogService)
 
@@ -26,6 +25,7 @@ export class Discussion{
         this.loading = false;
         this.dialogService = dialogService;
         this.textValue = "";
+        this.event.discussion = [];
     }
 
     openModal() {

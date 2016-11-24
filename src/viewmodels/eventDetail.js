@@ -1,17 +1,19 @@
 import { inject } from 'aurelia-framework';
 import { DataRepository } from '../services/dataRepository';
+import {authService} from '../services/authService';
 import { Router } from 'aurelia-router';
 
-@inject(DataRepository, Router)
+@inject(DataRepository, Router, authService)
 
 export class EventDetail {
-    constructor(dataRepository, router){
+    constructor(dataRepository, router, authService){
         
         this.dataRepository = dataRepository;
         this.router = router;
 
         this.event = {};
         this.loading = false;
+        this.authService = authService;
     }
 
     

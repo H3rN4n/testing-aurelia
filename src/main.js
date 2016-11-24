@@ -17,6 +17,7 @@ export function configure(aurelia){
             // .registerEndpoint('protected-api', 'https://myapi.org/protected-api')
             // .registerEndpoint('public-api', 'http://myapi.org/public-api');
         })
+        .plugin('aurelia-computed')
         .plugin('aurelia-authentication', baseConfig => {
             baseConfig.configure(authConfig);
         })
