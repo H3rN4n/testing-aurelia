@@ -20,12 +20,12 @@ export class Discussion{
     constructor(dataRepository, router, dialogService){
         this.title = 'Discussion'
         this.event = {};
+        this.event.discussion = [{text: 'example text'}];
         this.dataRepository = dataRepository;
         this.router = router;
         this.loading = false;
         this.dialogService = dialogService;
-        this.textValue = "";
-        this.event.discussion = [];
+        this.textValue = "";   
     }
 
     openModal() {
@@ -58,6 +58,7 @@ export class Discussion{
     }
 
     send(){
+        console.log(this.event);
         this.event.discussion = this.event.discussion.concat({text: this.textValue})
         this.textValue = "";
     
