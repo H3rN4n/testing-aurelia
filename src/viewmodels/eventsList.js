@@ -50,6 +50,12 @@ export class EventsList{
     canActivate(params, routeConfig){
         if(this.authService.userLoggedIn){
             console.log(this.authService.user.providerData[0].uid);
+            var userId = this.authService.user.providerData[0].uid;
+            
+            articleService.createRef(userId);
+
+            console.log(articleService.loadEvents());
+
             var pastOrFuture = routeConfig.name == "" ? 'future' : routeConfig.name;
             let promise = new Promise((resolve, reject) => {
                 return this.dataRepository.getEvents().then((events) => {
