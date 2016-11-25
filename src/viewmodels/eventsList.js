@@ -52,9 +52,9 @@ export class EventsList{
             console.log(this.authService.user.providerData[0].uid);
             var userId = this.authService.user.providerData[0].uid;
             
-            articleService.createRef(userId);
+            //articleService.createRef(userId);
 
-            console.log(articleService.loadEvents());
+            //console.log(articleService.loadEvents());
 
             var pastOrFuture = routeConfig.name == "" ? 'future' : routeConfig.name;
             let promise = new Promise((resolve, reject) => {
