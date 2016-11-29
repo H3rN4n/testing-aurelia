@@ -1,8 +1,0 @@
-<template>
-    <h2>Event ${event.title}</h2>
-    <md-progress md-type="circular" md-size="small" md-color="blue" if.bind="loading"></md-progress>
-    <p>${event.description}</p>
-    <p>${event.dateTime}</p>
-    <button if.bind="authService.userLoggedIn" md-button="" type="button" click.trigger="goToDiscussion()" if.bind="!loading">Go To Discussion</button>
-    <!--<compose if.bind="authService.userLoggedIn" view="views/loginModal.html"></compose>-->
-</template>

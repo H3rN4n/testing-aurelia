@@ -1,2 +1,19 @@
+# ========== node packages ==========
 node_modules/
 jspm_packages/
+
+# ========== fonts & images ==========
+app/fonts
+app/img
+
+# ========== project files ==========
+.idea/
+.project
+.vscode/
+
+# ========== random files ==========
+.DS_Store
+app/.DS_Store
+**/.DS_Store
+**/*.swp
+**/*.swo
