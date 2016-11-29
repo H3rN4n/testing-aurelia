@@ -1,9 +1,0 @@
-<template>
-    <h4>Profile</h4>
-    <md-card md-image="${authService.user.photoURL}" if.bind="authService.user.photoURL" md-title="${authService.user.displayName}" md-size="small">
-        <div>
-        ${authService.user.email}
-        </div>
-    </md-card>
-    <compose view="views/chips.html"></compose>
-</template>

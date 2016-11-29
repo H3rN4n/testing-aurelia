@@ -1,0 +1,10 @@
+<template>
+    <h4>Profile</h4>
+    <md-card if.bind="authService.user.photoURL"
+             md-image="${authService.user.photoURL}"
+             md-title="${authService.user.displayName}"
+             md-size="small">
+        <span>${authService.user.email}</div>
+    </md-card>
+    <router-view></router-view>
+</template>
