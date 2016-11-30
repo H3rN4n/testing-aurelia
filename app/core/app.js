@@ -40,26 +40,6 @@ export class App {
                 },
                 name: 'eventDetail',
                 title: 'Event Detail'
-            },
-            {
-                route: ['event/:eventId/discussions'],
-                viewPorts:{
-                    mainContent: {moduleId: 'features/discussions/discussions'},
-                    sideBar: sponsorsModule
-                },
-                name: 'discussion',
-                title: 'Discussion'
-            },
-            {
-                route: ['jobs'],
-                viewPorts:{
-                    mainContent: {moduleId: 'viewmodels/jobs'},
-                    sideBar: sponsorsModule
-                },
-                name: 'jobs',
-                title: 'Jobs',
-                nav: true,
-                auth: true
             }
         ]);
     }
