@@ -28,16 +28,16 @@ export class EventDetail {
         this.loading = false;
     }
 
-    goToDiscussion(){
-        console.log('goToDiscussion')
-        //this.router.navigate('#/discussion');
-        this.router.navigateToRoute('discussion', {eventId: this.event.id})
-    }
+    // goToDiscussion(){
+    //     console.log('goToDiscussion')
+    //     //this.router.navigate('#/discussion');
+    //     this.router.navigateToRoute('discussion', {eventId: this.event.id})
+    // }
 
-    doSomething(){
+    composeVideoJs(){
         //console.log('aurelia sucks!');
         var selector = document.getElementById('video-player');
-        this.player = videojs(selector);
+        this.player = videojs(selector, { fluid: true, preload: 'metadata' });
     }
 
     activate(params, routeConfig, navigationInstruction){
@@ -53,7 +53,7 @@ export class EventDetail {
     }
 
     attached(){
-        this.doSomething();
+        this.composeVideoJs();
         return true;
     }
 }

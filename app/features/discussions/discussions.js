@@ -19,7 +19,7 @@ import { DialogService } from 'aurelia-dialog';
 
 export class Discussion {
     constructor(dataRepository, router, dialogService){
-        this.title = 'Discussion'
+        this.title = 'Comments'
         this.event = {};
         this.event.discussion = [{text: 'example text'}];
         this.dataRepository = dataRepository;

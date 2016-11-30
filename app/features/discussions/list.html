@@ -1,7 +1,13 @@
 <template>
     <md-collection>
-        <div repeat.for="item of event.discussion">
-            ${item.text}
-        </div>
+        <md-collection-item repeat.for="item of event.discussion" class="accent-text avatar">
+            <img src="/src/images/logow.png" alt="" class="circle">
+            <span class="title">Title</span>
+            <p>${item.text}</p>
+            <div class="secondary-content">
+                <!--<i class="material-icons">favorite border</i>
+                <i class="material-icons">favorite</i>-->
+            </div>
+        </md-collection-item>
     </md-collection>
 </template>

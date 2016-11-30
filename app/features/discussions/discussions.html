@@ -1,16 +1,12 @@
 <template>
     <h2>${title}</h2>
     <compose view="./list.html"></compose>
-    <h4>Leave a comment:</h4>
-    <div>
-        <md-input md-label="put some text here"
+    <div style="padding: 10px; border: 1px solid #aaa;">
+        <md-input md-label="Leave a comment"
                   md-value.bind="textValue">
         </md-input><br />
-        <button md-button="flat: true;"
-                md-waves class="accent-text"
-                click.delegate="send()">
+        <button md-button click.delegate="send()">
             Send
         </button>
     </div>
-    <!-- TODO Add modal -->
 </template>
