@@ -20,9 +20,9 @@ export class List {
     }
 
     @computedFrom('authService', 'authService.user')
-    get authenticated() {  
-      console.log(this.authService.user);
-      console.log(this.params, this.routeConfig);
+    get authenticated() {
+        console.log(this.authService.user);
+        console.log(this.params, this.routeConfig);
 
         if(this.authService.isUserLoggedIn){
             this.getEvents(this.params, this.routeConfig);
@@ -30,7 +30,7 @@ export class List {
             this.events = [];
         }
 
-      return this.authService.user;
+        return this.authService.user;
     }
 
     // writeUserListData(userId, eventList) {

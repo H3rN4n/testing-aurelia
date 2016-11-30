@@ -23,6 +23,10 @@ export class EventDetail {
         this.router.navigateToRoute('discussion', {eventId: this.event.id})
     }
 
+    doSomething(){
+        console.log('aurelia sucks!');
+    }
+
     activate(params, routeConfig, navigationInstruction){
         return true;
     }

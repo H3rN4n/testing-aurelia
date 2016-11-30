@@ -7,7 +7,7 @@ export class Navbar {
         this.authService = authService;
     }
 
-    @computedFrom('authService.user')
+    @computedFrom('authService', 'authService.user')
     get authenticated() {
       //console.log('this.authService.user');  
       console.log(this.authService.user);
