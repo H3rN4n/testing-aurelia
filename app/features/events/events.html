@@ -1,16 +1,9 @@
 <template>
     <h2>Events List for ${shellTitle}:</h2>
-    <md-progress md-type="circular"
-                 md-size="small"
-                 md-color="blue"
-                 if.bind="loading">
-    </md-progress>
-    <ul md-tabs class="z-depth-1">
+    <ul>
         <li class="${route.isActive ? 'active' : ''}"
-            md-waves="color: primary;"
             repeat.for="route of router.navigation" >
-            <a data-target="#subnavbar"
-               href="${route.href}">${route.title}</a>
+            <a href.bind="route.href">${route.title}</a>
         </li>
     </ul>
     <router-view></router-view>

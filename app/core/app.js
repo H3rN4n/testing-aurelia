@@ -33,7 +33,7 @@ export class App {
                 nav: true
             },
             {
-                route: ['events/:eventId'],
+                route: ['event/:eventId'],
                 viewPorts:{
                     mainContent: {moduleId: 'features/events/detail'},
                     sideBar: sponsorsModule
@@ -42,7 +42,7 @@ export class App {
                 title: 'Event Detail'
             },
             {
-                route: ['events/:eventId/discussions'],
+                route: ['event/:eventId/discussions'],
                 viewPorts:{
                     mainContent: {moduleId: 'features/discussions/discussions'},
                     sideBar: sponsorsModule
