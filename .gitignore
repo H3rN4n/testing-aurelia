@@ -2,10 +2,6 @@
 node_modules/
 jspm_packages/
 
-# ========== fonts & images ==========
-app/fonts
-app/img
-
 # ========== project files ==========
 .idea/
 .project
