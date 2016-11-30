@@ -1,4 +1,5 @@
-import { inject, computedFrom } from 'aurelia-framework';
+import { inject,
+         computedFrom } from 'aurelia-framework';
 import { Router,
          activationStrategy } from 'aurelia-router';
 import { authService } from '../../core/services/authService';
@@ -92,7 +93,6 @@ export class List {
                     this.loading = false;
                     resolve();
                 }, (err) => {
-                    console.log(err);
                     resolve();
                 });
             })
@@ -101,6 +101,6 @@ export class List {
     }
 
     determineActivationStrategy() {
-        return activationStrategy.invokeLifecycle;
+        return activationStrategy.replace;
     }
 }

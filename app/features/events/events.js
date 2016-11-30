@@ -8,21 +8,23 @@ export class Events {
 
         config.map([
             {
-                "route": ['', 'future'],
-                "moduleId": "features/events/list",
-                "title": "Future Events",
-                "nav": true,
-                "href": "/events/future",
-                "name": "future"
+                route: ['', 'future'],
+                moduleId: "features/events/list",
+                title: "Future Events",
+                nav: true,
+                href: "/events/future",
+                name: "future"
             },
             {
-                "route": 'past',
-                "moduleId": "features/events/list",
-                "title": "Past Events",
-                "nav": true,
-                "href": "/events/past",
-                "name": "past"
+                route: 'past',
+                moduleId: "features/events/list",
+                title: "Past Events",
+                nav: true,
+                href: "/events/past",
+                name: "past"
             }
         ]);
+
+        this.router.refreshNavigation();
     }
 }

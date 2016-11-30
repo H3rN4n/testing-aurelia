@@ -1,5 +1,19 @@
 <template>
     <h2>Events List for ${shellTitle}:</h2>
+    <p>
+        <strong>Working (Hardcoded) Links</strong><br>
+        <a href="/events/past">Past Events [Hardcoded]</a> |
+        <a href="/events/future">Future Events [Hardcoded]</a>
+    </p>
+    <p>
+        <strong>Buggy Links</strong>
+        <i>TODO: Fix bug (race condition?) when generating links based on router.navigation</i><br>
+        <i>See below routes are properly accessed when using interpolation, but failed when used from repeat.for</i>
+        <pre>
+            Route navigation ${router.navigation}
+            Route navigation 1 ${router.navigation[0].href} | ${router.navigation[0].href}
+            navigation 1 ${router.navigation[0].href} | ${router.navigation[0].href}</pre>
+    </p>
     <ul>
         <li class="${route.isActive ? 'active' : ''}"
             repeat.for="route of router.navigation" >
