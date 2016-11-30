@@ -1,4 +1,5 @@
 <template>
+    <pre>${authenticated}</pre>
     <md-collection>
         <div repeat.for="event of events">
             <compose model.bind="event" view="./event.html"></compose>
