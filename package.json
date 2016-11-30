@@ -29,7 +29,8 @@
       "flexboxgrid": "github:kristoferjoseph/flexboxgrid@^6.3.2",
       "lodash": "npm:lodash@^4.17.2",
       "materialize": "github:Dogfalo/materialize@^0.97.8",
-      "moment": "npm:moment@^2.15.2"
+      "moment": "npm:moment@^2.15.2",
+      "videojs/video.js": "github:videojs/video.js@^5.13.2"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

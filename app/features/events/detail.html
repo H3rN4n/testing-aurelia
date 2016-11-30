@@ -7,9 +7,21 @@
     </md-progress>
     <p>${event.description}</p>
     <p>${event.dateTime}</p>
-    <button type="button"
+    <button md-button type="button"
             click.trigger="goToDiscussion()"
             if.bind="!loading">Go To Discussion
     </button>
+    
     <!--<compose view="views/loginModal.html"></compose>-->
+
+    <video id="video-player" class="video-js vjs-default-skin" controls
+        preload="auto" width="640" height="264" poster="really-cool-video-poster.jpg"
+        data-setup='{}'>
+        <source src="/src/videos/SampleVideo_1280x720_5mb.mp4" type="video/mp4">
+        <source src="/src/videos/elephants-dream.webm" type="video/webm">
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser
+            that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+    </video>
 </template>

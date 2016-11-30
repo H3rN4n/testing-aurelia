@@ -38,6 +38,7 @@ System.config({
     "lodash": "npm:lodash@4.17.2",
     "materialize": "github:Dogfalo/materialize@0.97.8",
     "moment": "npm:moment@2.16.0",
+    "videojs/video.js": "github:videojs/video.js@5.13.2",
     "github:Dogfalo/materialize@0.97.8": {
       "css": "github:systemjs/plugin-css@0.1.32",
       "jquery": "npm:jquery@2.2.4"
