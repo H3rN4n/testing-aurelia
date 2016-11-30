@@ -21,7 +21,7 @@ export class Events {
                 "title": "Past Events",
                 "nav": true,
                 "href": "/events/past",
-                "name": "future"
+                "name": "past"
             }
         ]);
     }

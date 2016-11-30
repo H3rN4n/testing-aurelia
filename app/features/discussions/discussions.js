@@ -58,8 +58,7 @@ export class Discussion {
     }
 
     send(){
-        console.log(this.event);
-        this.event.discussion = this.event.discussion.concat({text: this.textValue})
+        // this.event.discussion = this.event.discussion.concat({text: this.textValue})
         this.textValue = "";
 
     }

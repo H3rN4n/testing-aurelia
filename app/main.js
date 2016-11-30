@@ -32,8 +32,6 @@ export function configure(aurelia){
     ViewLocator.prototype.convertOriginToViewUrl = (origin) => {
         let moduleId = origin.moduleId;
 
-        console.log("moduleId:", moduleId);
-
         var id = ( moduleId.endsWith('.js') || moduleId.endsWith('.ts'))
             ? moduleId.substring(0, moduleId.length - 3)
             : moduleId;
