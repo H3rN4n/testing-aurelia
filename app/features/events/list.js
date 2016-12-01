@@ -6,33 +6,37 @@ import { authService } from '../../core/services/authService';
 import { DataRepository } from '../../core/services/dataRepository';
 import { ArticleService } from '../../core/services/articleService';
 
+import { EventAggregator } from 'aurelia-event-aggregator';
+
 @inject(DataRepository,
         Router,
         authService,
-        ArticleService)
+        ArticleService,
+        EventAggregator)
 
 export class List {
-    constructor(dataRepository, router, authService, ArticleService) {
+    constructor(dataRepository, router, authService, ArticleService, EventAggregator) {
         this.loading = true;
         this.events = [];
         this.dataRepository = dataRepository;
         this.router = router;
         this.authService = authService;
+        this.ea = EventAggregator;
     }
 
-    @computedFrom('authService', 'authService.user')
-    get authenticated() {
-        console.log(this.authService.user);
-        console.log(this.params, this.routeConfig);
+    // @computedFrom('authService', 'authService.user')
+    // get authenticated() {
+    //     console.log(this.authService.user);
+    //     console.log(this.params, this.routeConfig);
 
-        if(this.authService.isUserLoggedIn){
-            this.getEvents(this.params, this.routeConfig);
-        } else {
-            this.events = [];
-        }
+    //     if(this.authService.isUserLoggedIn){
+    //         this.getEvents(this.params, this.routeConfig);
+    //     } else {
+    //         this.events = [];
+    //     }
 
-        return this.authService.user;
-    }
+    //     return this.authService.user;
+    // }
 
     // writeUserListData(userId, eventList) {
     //     console.log('writeUserListData');
@@ -102,5 +106,18 @@ export class List {
 
     determineActivationStrategy() {
         return activationStrategy.replace;
+    }
+
+    attached() {
+        this.subscriber = this.ea.subscribe('login', response => {
+            if(response.user){
+                console.log(response);
+                this.getEvents(this.params, this.routeConfig);
+            }
+        });
+    }
+
+    detached() {
+        this.subscriber.dispose();
     }
 }

@@ -17,10 +17,6 @@ export class Player {
         this.player = videojs(selector, { fluid: true, preload: 'metadata' });
     }
 
-    created(view){
-        console.log(view);
-    }
-
     bind(bindingContext){
         console.log(bindingContext);
     }
