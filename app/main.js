@@ -10,17 +10,14 @@ export function configure(aurelia){
         .standardConfiguration()
         .developmentLogging()
         /* configure aurelia-authentication */
-        .plugin('aurelia-api', configure => {
-        configure
-            .registerEndpoint('api', 'http://aurelia-dev.com:2112')
-            // .registerEndpoint('protected-api', 'https://myapi.org/protected-api')
-            // .registerEndpoint('public-api', 'http://myapi.org/public-api');
-        })
+        // .plugin('aurelia-api', configure => {
+        // configure
+        //     .registerEndpoint('api', 'http://aurelia-dev.com:2112')
+        //     // .registerEndpoint('protected-api', 'https://myapi.org/protected-api')
+        //     // .registerEndpoint('public-api', 'http://myapi.org/public-api');
+        // })
         .plugin('aurelia-computed', { // install the plugin
             enableLogging: true // enable debug logging to see aurelia-computed's observability messages.
-        })
-        .plugin('aurelia-authentication', baseConfig => {
-            baseConfig.configure(authConfig);
         })
         .plugin('aurelia-dialog', config => {
             config.useDefaults();
@@ -30,16 +27,6 @@ export function configure(aurelia){
             })
         .plugin('aurelia-materialize-bridge', bridge => bridge.useAll())
         .plugin('aurelia-modal');
-
-    ViewLocator.prototype.convertOriginToViewUrl = (origin) => {
-        let moduleId = origin.moduleId;
-
-        var id = ( moduleId.endsWith('.js') || moduleId.endsWith('.ts'))
-            ? moduleId.substring(0, moduleId.length - 3)
-            : moduleId;
-
-        return id.replace("viewmodels", "views") + ".html";
-    }
 
     aurelia.start().then(a => a.setRoot("core/app"));
 }

@@ -1,5 +1,4 @@
 import { customElement, bindable } from "aurelia-framework";
-import { autoinject } from "aurelia-dependency-injection";
 import videojs from '../../../jspm_packages/github/videojs/video.js@5.13.2/video.js';
 
 @customElement("player")
@@ -22,8 +21,6 @@ export class Player {
     }
 
     attached() {
-        // alert(this.video);
-        // alert(this.playerId);
         this.composeVideoJs();
     }
 }
