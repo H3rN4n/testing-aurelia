@@ -1,4 +1,5 @@
 <template>
+    <require from="../player/player"></require>
     <h2>Event ${event.title}</h2>
     <md-progress md-type="circular"
                  md-size="small"
@@ -11,18 +12,19 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-9">
-                <video id="video-player" class="video-js vjs-default-skin" controls
-                    preload="auto" width="640" height="264" poster="really-cool-video-poster.jpg"
-                    data-setup='{}'>
-                    <source src="/src/videos/SampleVideo_1280x720_5mb.mp4" type="video/mp4">
-                    <source src="/src/videos/elephants-dream.webm" type="video/webm">
-                    <p class="vjs-no-js">
-                        To view this video please enable JavaScript, and consider upgrading to a web browser
-                        that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                    </p>
-                </video>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <player player-id.bind="player-1" video.bind="{'text': 'hola'}"></player>
+                    </div>
+                    <div class="col-sm-4">
+                        <player player-id.bind="player-2" video.bind="{'text': 'hola'}"></player>
+                    </div>
+                    <div class="col-sm-4">
+                        <player player-id.bind="player-3" video.bind="{'text': 'hola'}"></player>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-3" style="border: 1px solid black;">
+            <div class="col-sm-3" style="border: 1px solid #ddd;">
                 <compose view-model="../discussions/discussions"></compose>
             </div>
         </div>
