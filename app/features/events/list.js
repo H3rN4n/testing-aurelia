@@ -21,29 +21,9 @@ export class List {
         this.dataRepository = dataRepository;
         this.router = router;
         this.authService = authService;
+        this.ArticleService = ArticleService;
         this.ea = EventAggregator;
     }
-
-    // @computedFrom('authService', 'authService.user')
-    // get authenticated() {
-    //     console.log(this.authService.user);
-    //     console.log(this.params, this.routeConfig);
-
-    //     if(this.authService.isUserLoggedIn){
-    //         this.getEvents(this.params, this.routeConfig);
-    //     } else {
-    //         this.events = [];
-    //     }
-
-    //     return this.authService.user;
-    // }
-
-    // writeUserListData(userId, eventList) {
-    //     console.log('writeUserListData');
-    //     firebase.database().ref('users/' + userId).set({
-    //         eventList: eventList
-    //     });
-    // }
 
     canDeactivate(){
         console.log('canDeactivate');
@@ -54,9 +34,6 @@ export class List {
     }
 
     activate(params, routeConfig) {
-        // if(this.authService.user){
-        //     this.writeUserListData(this.authService.user.providerData[0].uid, this.events)
-        // }
         this.routeParams = params;
         this.routeConfig = routeConfig;
 
@@ -70,7 +47,9 @@ export class List {
             var pastOrFuture = routeConfig.name || 'future';
 
             let promise = new Promise((resolve, reject) => {
-                return this.dataRepository.getEvents(pastOrFuture).then((events) => {
+                //return this.dataRepository.getEvents(pastOrFuture)
+                
+                return this.ArticleService.getEvents(userId).then((events) => {
                     if (params && params.speaker || params && params.topic){
                         var filteredResults = [];
 

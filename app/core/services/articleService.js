@@ -10,12 +10,18 @@ export class ArticleService {
         this.eventListRef = firebase.database().ref('users/' + userId + '/eventList');
     }
 
-    loadEvents(userId) {
-        this.eventListRef.on('value', function(snapshot) {
-            console.log(snapshot);
-        //updateStarCount(postElement, snapshot.val());
-            return snapshot;
+    getEvents(userId) {
+        if(!this.eventListRef){
+            this.createRef(userId);
+        }
+        let promise = new Promise((resolve, reject) => {
+            this.eventListRef.on('value', function(snapshot) {
+                console.log(snapshot.val());
+                 resolve(snapshot.val());
+            });
         });
+
+        return promise;
     }
 
 }
